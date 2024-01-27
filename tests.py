@@ -31,19 +31,18 @@ from credit_card_validator import credit_card_validator
 
 class TestCreditCardValidator(unittest.TestCase):
 
-    def test_edges(self):
-        # test valid card numbers from the edge domain
-        for i in (
-            5574726700232866,
-            5126396502239288,
-            2720926415343830,
-            2221858293648259,
-            4532782263081517,
-            341786522775107,
-            372492094099164
-        ):
-            with self.subTest(i=i):
-                self.assertTrue(credit_card_validator(i))
+    def test_mastercard_valid(self):
+        self.assertTrue(credit_card_validator(5574726700232866))
+        self.assertTrue(credit_card_validator(5126396502239288))
+        self.assertTrue(credit_card_validator(2720926415343830))
+        self.assertTrue(credit_card_validator(2221858293648259))
+
+    def test_visa_valid(self):
+        self.assertTrue(credit_card_validator(4532782263081517))
+
+    def test_amex_valid(self):
+        self.assertTrue(credit_card_validator(341786522775107))
+        self.assertTrue(credit_card_validator(372492094099164))
 
     def test_mastercard_prefix51_55_checkbit(self):
         # test correct prefix and length but wrong check bit
