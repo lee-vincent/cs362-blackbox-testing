@@ -20,8 +20,14 @@ class TestCreditCardValidator(unittest.TestCase):
     def test_noinput(self):
         self.assertFalse(credit_card_validator())
 
-    def test_prefix(self):
+    def test_invalidprefix(self):
         self.assertFalse(credit_card_validator(7))
+
+    def test_mastercardprefix(self):
+        for i in range(51, 55):
+            with self.subTest(i=i):
+                cc_num = i+"00000000000000"
+                self.assertFalse(credit_card_validator(cc_num))
 
     def test_prefix_length15(self):
         self.assertFalse(credit_card_validator(700000000000000))
