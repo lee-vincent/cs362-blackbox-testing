@@ -93,6 +93,22 @@ class TestCreditCardValidator(unittest.TestCase):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
+    def test_amex_length16(self):
+        for i in (
+            3417865227751070,
+            3724920940991640
+        ):
+            with self.subTest(i=i):
+                self.assertFalse(credit_card_validator(i))
+
+    def test_amex_length14(self):
+        for i in (
+            34178652277510,
+            37249209409916
+        ):
+            with self.subTest(i=i):
+                self.assertFalse(credit_card_validator(i))
+
     # def test_noinput(self):
     #     self.assertFalse(credit_card_validator(0))
 
