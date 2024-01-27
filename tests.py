@@ -141,14 +141,11 @@ class TestCreditCardValidator(unittest.TestCase):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
-    def test_invalid_length17(self):
-        self.assertFalse(credit_card_validator(70000000000000000))
-
-    def test_invalid_zero16(self):
-        self.assertFalse(credit_card_validator(0000000000000000))
-
-    def test_invalid_zero15(self):
-        self.assertFalse(credit_card_validator(000000000000000))
+    def test_mastercard_invalid_length_valid_check(self):
+        """Verifies if Master Cards with invalid lengths
+        and valid check bits returns False
+        Picked using Category Partition Testing"""
+        self.assertFalse(credit_card_validator(515551))
 
 
 if __name__ == '__main__':
