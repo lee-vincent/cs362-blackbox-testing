@@ -109,9 +109,8 @@ class TestCreditCardValidator(unittest.TestCase):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
-    def test_noinput(self):
-        with self.assertRaises(TypeError):
-            credit_card_validator()
+    def test_string_input(self):
+        self.assertFalse(credit_card_validator("agafgdf"))
 
     def test_invalid_prefix_length15(self):
         # invalid prefix for length 15
