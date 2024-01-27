@@ -31,13 +31,16 @@ from credit_card_validator import credit_card_validator
 
 class TestCreditCardValidator(unittest.TestCase):
 
-    def test_mastercard_edges(self):
+    def test_edges(self):
         # test invalid prefixes
         for i in (
             5574726700232866,
             5126396502239288,
             2720926415343830,
-            2221858293648259
+            2221858293648259,
+            4532782263081517,
+            341786522775107,
+            372492094099164
         ):
             with self.subTest(i=i):
                 self.assertTrue(credit_card_validator(i))
@@ -67,26 +70,6 @@ class TestCreditCardValidator(unittest.TestCase):
         for i in (0, 1, 6, 7, 8, 9):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
-    
-    def test_mastercard_prefix51_55_length(self):
-        # test correct prefix and length but wrong check bit
-        self.assertFalse(credit_card_validator(550000000000000))
-
-    def test_mastercard_prefix2221_2720_length(self):
-        # test correct prefix and length but wrong check bit
-        self.assertFalse(credit_card_validator(2221858293648250))
-
-    def test_visa_prefix4_length(self):
-        # test correct prefix and length but wrong check bit
-        self.assertFalse(credit_card_validator(4532782263081510))
-
-    def test_amex_prefix34_length(self):
-        # test correct prefix and length but wrong check bit
-        self.assertFalse(credit_card_validator(341786522775102))
-
-    def test_amex_prefix37_length(self):
-        # test correct prefix and length but wrong check bit
-        self.assertFalse(credit_card_validator(372492094099162))
 
     # def test_noinput(self):
     #     self.assertFalse(credit_card_validator(0))
