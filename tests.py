@@ -71,24 +71,24 @@ class TestCreditCardValidator(unittest.TestCase):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
-    def test_mastercard_length17(self):
+    def test_visa_mastercard_length17(self):
         for i in (
             55747267002328660,
             51263965022392880,
             27209264153438300,
             22218582936482590,
-
+            45327822630815170
         ):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
-    def test_mastercard_length15(self):
+    def test_visa_mastercard_length15(self):
         for i in (
             557472670023286,
             512639650223928,
             272092641534383,
             222185829364825,
-
+            453278226308151
         ):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
