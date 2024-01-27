@@ -1,5 +1,5 @@
 import unittest
-from . import credit_card_validator
+from credit_card_validator import credit_card_validator
 
 # Visa
 #   Prefix(es): 4
