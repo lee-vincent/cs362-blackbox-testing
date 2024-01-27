@@ -150,6 +150,13 @@ class TestCreditCardValidator(unittest.TestCase):
         self.assertFalse(credit_card_validator(55378393452449462))
         self.assertFalse(credit_card_validator(51560693452449462))
 
+    def test_visa_invalid_length_valid_check(self):
+        """Verifies if Master Cards with invalid lengths
+        and valid check bits returns False
+        Picked using Category Partition Testing"""
+        self.assertFalse(credit_card_validator(439983737393031))
+        self.assertFalse(credit_card_validator(49388839032114035))
+
 
 if __name__ == '__main__':
     unittest.main()
