@@ -18,12 +18,13 @@ from credit_card_validator import credit_card_validator
 class TestCreditCardValidator(unittest.TestCase):
 
     def test_noinput(self):
-        self.assertFalse(credit_card_validator())
+        self.assertFalse(credit_card_validator(0))
 
     def test_invalidprefix(self):
         self.assertFalse(credit_card_validator(7))
 
     def test_mastercardprefix(self):
+        # test correct prefix and length but wrong check bit
         for i in range(51, 55):
             with self.subTest(i=i):
                 cc_num = str(i)+"00000000000000"
