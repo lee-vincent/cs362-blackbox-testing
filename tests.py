@@ -43,11 +43,11 @@ class TestCreditCardValidator(unittest.TestCase):
 
     def test_amex_prefix34_checkbit(self):
         # test correct prefix and length but wrong check bit
-        self.assertFalse(credit_card_validator(341786522775100))
+        self.assertFalse(credit_card_validator(341786522775102))
 
     def test_amex_prefix37_checkbit(self):
         # test correct prefix and length but wrong check bit
-        self.assertFalse(credit_card_validator(372492094099160))
+        self.assertFalse(credit_card_validator(372492094099162))
 
     def test_noinput(self):
         self.assertFalse(credit_card_validator(0))
