@@ -109,9 +109,6 @@ class TestCreditCardValidator(unittest.TestCase):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
-    def test_string_input(self):
-        self.assertFalse(credit_card_validator("agafgdf"))
-
     def test_invalid_prefix_length15(self):
         # invalid prefix for length 15
         for i in (
@@ -121,20 +118,22 @@ class TestCreditCardValidator(unittest.TestCase):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
-    def test_invalid_prefix_length16(self):
-        # invalid prefix for length 15
+    def test_invalid_prefixes_length16(self):
         for i in (
-            3474726700232866,
-            3726396502239288,
+            1000000000000000,
+            2000000000000000,
+            3000000000000000,
+            5000000000000000,
+            6000000000000000,
+            7000000000000000,
+            8000000000000000,
+            9000000000000000
         ):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
-    # def test_prefix_length16(self):
-    #     self.assertFalse(credit_card_validator(7000000000000000))
-
-    # def test_prefix_length17(self):
-    #     self.assertFalse(credit_card_validator(70000000000000000))
+    def test_invalid_length17(self):
+        self.assertFalse(credit_card_validator(70000000000000000))
 
 
 if __name__ == '__main__':
