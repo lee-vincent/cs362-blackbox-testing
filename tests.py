@@ -113,12 +113,14 @@ class TestCreditCardValidator(unittest.TestCase):
         with self.assertRaises(TypeError):
             credit_card_validator()
 
-    # def test_invalidprefix(self):
-    #     self.assertFalse(credit_card_validator(7))
-
-    # def test_prefix_length15(self):
-    #     # invalid prefix, correct check bit
-    #     self.assertFalse(credit_card_validator(700000000000005))
+    def test_invalid_prefix_length15(self):
+        # invalid prefix for length 15
+        for i in (
+            35178652277510,
+            36249209409916
+        ):
+            with self.subTest(i=i):
+                self.assertFalse(credit_card_validator(i))
 
     # def test_prefix_length16(self):
     #     self.assertFalse(credit_card_validator(7000000000000000))
