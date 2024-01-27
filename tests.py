@@ -109,8 +109,9 @@ class TestCreditCardValidator(unittest.TestCase):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
-    # def test_noinput(self):
-    #     self.assertFalse(credit_card_validator(0))
+    def test_noinput(self):
+        with self.assertRaises(TypeError):
+            credit_card_validator()
 
     # def test_invalidprefix(self):
     #     self.assertFalse(credit_card_validator(7))
