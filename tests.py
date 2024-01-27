@@ -32,7 +32,7 @@ from credit_card_validator import credit_card_validator
 class TestCreditCardValidator(unittest.TestCase):
 
     def test_edges(self):
-        # test invalid prefixes
+        # test valid card numbers from the edge domain
         for i in (
             5574726700232866,
             5126396502239288,
@@ -68,6 +68,28 @@ class TestCreditCardValidator(unittest.TestCase):
     def test_invalid_prefixes(self):
         # test invalid prefixes
         for i in (0, 1, 6, 7, 8, 9):
+            with self.subTest(i=i):
+                self.assertFalse(credit_card_validator(i))
+
+    def test_mastercard_length17(self):
+        for i in (
+            55747267002328660,
+            51263965022392880,
+            27209264153438300,
+            22218582936482590,
+
+        ):
+            with self.subTest(i=i):
+                self.assertFalse(credit_card_validator(i))
+
+    def test_mastercard_length15(self):
+        for i in (
+            557472670023286,
+            512639650223928,
+            272092641534383,
+            222185829364825,
+
+        ):
             with self.subTest(i=i):
                 self.assertFalse(credit_card_validator(i))
 
