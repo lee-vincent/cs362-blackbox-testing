@@ -49,6 +49,12 @@ class TestCreditCardValidator(unittest.TestCase):
         # test correct prefix and length but wrong check bit
         self.assertFalse(credit_card_validator(372492094099162))
 
+    def test_invalid_prefixs(self):
+        # test invalid prefixes
+        for i in (0, 1, 6, 7, 8, 9):
+            with self.subTest(i=i):
+                self.assertFalse(credit_card_validator(i))
+
     # def test_noinput(self):
     #     self.assertFalse(credit_card_validator(0))
 
