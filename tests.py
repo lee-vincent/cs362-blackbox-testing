@@ -205,6 +205,92 @@ class TestCreditCardValidator(unittest.TestCase):
 
         ###############################################################
 
+    def test_mastercard_51_length_short_checkdigit_invalid(self):
+        """Verifies if MasterCards with 51 prefixes, invalid lengths (short),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(513784674839460))
+
+    def test_mastercard_55_length_short_checkdigit_invalid(self):
+        """Verifies if MasterCards with 55 prefixes, invalid lengths (short),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(553783994839460))
+
+    def test_mastercard_2221_length_short_checkdigit_invalid(self):
+        """Verifies if MasterCards with 2221 prefixes, invalid lengths (short),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(222123432423230))
+
+    def test_mastercard_2720_length_short_checkdigit_invalid(self):
+        """Verifies if MasterCards with 2720 prefixes, invalid lengths (short),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(272075483910340))
+
+    def test_mastercard_51_length_long_checkdigit_invalid(self):
+        """Verifies if MasterCards with 51 prefixes, invalid lengths (long),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(55378393452449460))
+
+    def test_mastercard_55_length_long_checkdigit_invalid(self):
+        """Verifies if MasterCards with 55 prefixes, invalid lengths (long),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(55378393452449460))
+
+    def test_mastercard_2221_length_long_checkdigit_invalid(self):
+        """Verifies if MasterCards with 2221 prefixes, invalid lengths (long),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(22218373999372120))
+
+    def test_mastercard_2720_length_long_checkdigit_invalid(self):
+        """Verifies if MasterCards with 2720 prefixes, invalid lengths (long),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(27207548123910340))
+
+    def test_visa_4_length_long_checkdigit_invalid(self):
+        """Verifies if Visas with 4 prefixes, invalid lengths (long),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(49388839032114030))
+
+    def test_visa_4_length_short_checkdigit_invalid(self):
+        """Verifies if Visas with 4 prefixes, invalid lengths (short),
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(439983737393030))
+
+    def test_amex_34_length_short_checkdigit_invalid(self):
+        """Verifies if America Express cards with 34 prefixes,
+        invalid lengths (short), and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(34958576497450))
+
+    def test_amex_34_length_long_checkdigit_invalid(self):
+        """Verifies if America Express cards with 34 prefixes,
+        invalid lengths (long), and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(3494888332097450))
+
+    def test_amex_37_length_short_checkdigit_invalid(self):
+        """Verifies if America Express cards with 37 prefixes,
+        invalid lengths (short), and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(37892736598020))
+
+    def test_amex_37_length_long_checkdigit_invalid(self):
+        """Verifies if America Express cards with 37 prefixes,
+        invalid lengths (long), and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(3794889033097450))
+
+        ###############################################################
+
     def test_visa_mastercard_prefix_invalid(self):
         """Verifies if Visas/MasterCards with invalid prefixes, valid lengths,
         and valid check digits returns False
@@ -230,6 +316,8 @@ class TestCreditCardValidator(unittest.TestCase):
         valid lengths, and invalid check digits returns False
         Picked using Manual Error Guessing Testing"""
         self.assertFalse(credit_card_validator(300000000000000))
+
+        ###############################################################
 
 
 if __name__ == '__main__':
