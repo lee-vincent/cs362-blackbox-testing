@@ -31,38 +31,93 @@ from credit_card_validator import credit_card_validator
 
 class TestCreditCardValidator(unittest.TestCase):
 
-    def test_mastercard_valid(self):
-        self.assertTrue(credit_card_validator(5574726700232866))
+    def test_mastercard_51_valid(self):
+        """Verifies if MasterCards with 51 prefixes, valid lengths,
+        and valid check digits returns True
+        Picked using Manual Boundary Value Testing"""
         self.assertTrue(credit_card_validator(5126396502239288))
+
+    def test_mastercard_55_valid(self):
+        """Verifies if MasterCards with 55 prefixes, valid lengths,
+        and valid check digits returns True
+        Picked using Manual Boundary Value Testing"""
+        self.assertTrue(credit_card_validator(5574726700232866))
+
+    def test_mastercard_2720_valid(self):
+        """Verifies if MasterCards with 2720 prefixes, valid lengths,
+        and valid check digits returns True
+        Picked using Manual Boundary Value Testing"""
         self.assertTrue(credit_card_validator(2720926415343830))
+
+    def test_mastercard_2221_valid(self):
+        """Verifies if MasterCards with 2221 prefixes, valid lengths,
+        and valid check digits returns True
+        Picked using Manual Boundary Value Testing"""
         self.assertTrue(credit_card_validator(2221858293648259))
 
-    def test_visa_valid(self):
+    def test_visa_4_valid(self):
+        """Verifies if Visas with 4 prefixes, valid lengths,
+        and valid check digits returns True
+        Picked using Manual Boundary Value Testing"""
         self.assertTrue(credit_card_validator(4532782263081517))
 
-    def test_amex_valid(self):
+    def test_amex_34_valid(self):
+        """Verifies if America Express cards with 34 prefixes, valid lengths,
+        and valid check digits returns True
+        Picked using Manual Boundary Value Testing"""
         self.assertTrue(credit_card_validator(341786522775107))
+
+    def test_amex_37_valid(self):
+        """Verifies if America Express cards with 37 prefixes, valid lengths,
+        and valid check digits returns True
+        Picked using Manual Boundary Value Testing"""
         self.assertTrue(credit_card_validator(372492094099164))
 
-    def test_mastercard_prefix51_55_checkbit(self):
-        # test correct prefix and length but wrong check bit
+        ###############################################################
+
+    def test_mastercard_51_checkdigit_invalid(self):
+        """Verifies if MasterCards with 51 prefixes, valid lengths,
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(5126396502239280))
+
+    def test_mastercard_55_checkdigit_invalid(self):
+        """Verifies if MasterCards with 55 prefixes, valid lengths,
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
         self.assertFalse(credit_card_validator(5574726700232860))
 
-    def test_mastercard_prefix2221_2720_checkbit(self):
-        # test correct prefix and length but wrong check bit
+    def test_mastercard_2720_checkdigit_invalid(self):
+        """Verifies if MasterCards with 2720 prefixes, valid lengths,
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(2720926415343835))
+
+    def test_mastercard_2221_checkdigit_invalid(self):
+        """Verifies if MasterCards with 2221 prefixes, valid lengths,
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
         self.assertFalse(credit_card_validator(2221858293648250))
 
-    def test_visa_prefix4_checkbit(self):
-        # test correct prefix and length but wrong check bit
+    def test_visa_4_checkdigit_invalid(self):
+        """Verifies if Visas with 4 prefixes, valid lengths,
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
         self.assertFalse(credit_card_validator(4532782263081510))
 
-    def test_amex_prefix34_checkbit(self):
-        # test correct prefix and length but wrong check bit
-        self.assertFalse(credit_card_validator(341786522775102))
+    def test_amex_34_checkdigit_invalid(self):
+        """Verifies if America Express cards with 34 prefixes, valid lengths,
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(341786522775100))
 
-    def test_amex_prefix37_checkbit(self):
-        # test correct prefix and length but wrong check bit
-        self.assertFalse(credit_card_validator(372492094099162))
+    def test_amex_37_checkdigit_invalid(self):
+        """Verifies if America Express cards with 37 prefixes, valid lengths,
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(372492094099160))
+
+        ###############################################################
 
     def test_invalid_prefixes(self):
         # test invalid prefixes
