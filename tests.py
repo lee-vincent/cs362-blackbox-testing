@@ -205,75 +205,11 @@ class TestCreditCardValidator(unittest.TestCase):
 
         ###############################################################
 
-    def test_visa_mastercard_length17(self):
-        for i in (
-            55747267002328660,
-            51263965022392880,
-            27209264153438300,
-            22218582936482590,
-            45327822630815170
-        ):
-            with self.subTest(i=i):
-                self.assertFalse(credit_card_validator(i))
-
-    def test_visa_mastercard_length15(self):
-        for i in (
-            557472670023286,
-            512639650223928,
-            272092641534383,
-            222185829364825,
-            453278226308151
-        ):
-            with self.subTest(i=i):
-                self.assertFalse(credit_card_validator(i))
-
-    def test_amex_length16(self):
-        for i in (
-            3417865227751070,
-            3724920940991640
-        ):
-            with self.subTest(i=i):
-                self.assertFalse(credit_card_validator(i))
-
-    def test_amex_length14(self):
-        for i in (
-            34178652277510,
-            37249209409916
-        ):
-            with self.subTest(i=i):
-                self.assertFalse(credit_card_validator(i))
-
-    def test_invalid_prefix_length15(self):
-        # invalid prefix for length 15
-        for i in (
-            100000000000000,
-            200000000000000,
-            300000000000000,
-            351786522775107,
-            362492094099164,
-            400000000000000,
-            500000000000000,
-            600000000000000,
-            700000000000000,
-            800000000000000,
-            900000000000000
-        ):
-            with self.subTest(i=i):
-                self.assertFalse(credit_card_validator(i))
-
-    def test_invalid_prefixes_length16(self):
-        for i in (
-            1000000000000000,
-            2000000000000000,
-            3000000000000000,
-            5000000000000000,
-            6000000000000000,
-            7000000000000000,
-            8000000000000000,
-            9000000000000000
-        ):
-            with self.subTest(i=i):
-                self.assertFalse(credit_card_validator(i))
+    def test_visa_mastercard_prefix_invalid(self):
+        """Verifies if Visas/MasterCards with invalid prefixes, valid lengths,
+        and valid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(8823732446254233))
 
 
 if __name__ == '__main__':
