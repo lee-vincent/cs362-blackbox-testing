@@ -319,6 +319,18 @@ class TestCreditCardValidator(unittest.TestCase):
 
         ###############################################################
 
+    def test_strings1(self):
+        """strings"""
+        self.assertFalse(credit_card_validator("1233634"))
+
+    def test_strings2(self):
+        """strings"""
+        self.assertFalse(credit_card_validator("abcdefgh"))
+
+    def test_strings3(self):
+        """strings"""
+        self.assertFalse(credit_card_validator(""))
+
 
 if __name__ == '__main__':
     unittest.main()
