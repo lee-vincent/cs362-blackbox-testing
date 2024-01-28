@@ -211,6 +211,12 @@ class TestCreditCardValidator(unittest.TestCase):
         Picked using Manual Error Guessing Testing"""
         self.assertFalse(credit_card_validator(8823732446254233))
 
+    def test_amex_prefix_invalid(self):
+        """Verifies if America Express cards with invalid prefixes,
+        valid lengths, and valid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(882373244625426))
+
 
 if __name__ == '__main__':
     unittest.main()
