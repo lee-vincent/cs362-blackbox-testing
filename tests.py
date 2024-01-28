@@ -215,7 +215,7 @@ class TestCreditCardValidator(unittest.TestCase):
         """Verifies if America Express cards with invalid prefixes,
         valid lengths, and valid check digits returns False
         Picked using Manual Error Guessing Testing"""
-        self.assertFalse(credit_card_validator(334748367927424))
+        self.assertFalse(credit_card_validator(351786522775104))
 
 
 if __name__ == '__main__':
