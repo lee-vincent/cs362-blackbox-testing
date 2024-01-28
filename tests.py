@@ -217,6 +217,20 @@ class TestCreditCardValidator(unittest.TestCase):
         Picked using Manual Error Guessing Testing"""
         self.assertFalse(credit_card_validator(351786522775104))
 
+        ###############################################################
+
+    def test_visa_mastercard_prefix_checkdigit_invalid(self):
+        """Verifies if Visas/MasterCards with invalid prefixes, valid lengths,
+        and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(5000000000000000))
+
+    def test_amex_prefix_checkdigit_invalid(self):
+        """Verifies if America Express cards with invalid prefixes,
+        valid lengths, and invalid check digits returns False
+        Picked using Manual Error Guessing Testing"""
+        self.assertFalse(credit_card_validator(300000000000000))
+
 
 if __name__ == '__main__':
     unittest.main()
